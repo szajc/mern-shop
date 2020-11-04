@@ -1,0 +1,13 @@
+.modalBody {
+    display: flex;
+    margin: auto;
+    margin-bottom: 10px;
+}
+.modalBody span {
+    justify-content: center;
+    color: #fff;
+    border-radius: 10px;
+}
+.modalBody p {
+    margin: 10px;
+}
