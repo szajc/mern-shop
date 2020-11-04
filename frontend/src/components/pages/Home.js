@@ -92,7 +92,7 @@ export default function Home() {
             // delete in array we got from mongoDB
             dispatch({type: 'DELETEITEM', payload: deleteId})
             //const newData = data.filter(item => item._id !== deleteId)
-            //setData(newData); 
+             
 
             // delete on server mongoDB
             const token = localStorage.getItem("auth-token");
