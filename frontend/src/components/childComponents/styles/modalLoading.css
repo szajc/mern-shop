@@ -1,0 +1,32 @@
+.OverlayLoad {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    z-index: 999;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.ModalLoad {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0,.7);
+    z-index: 998;
+}
+.OverlayLoad p {
+    font-size: 13px;
+    font-weight: 700;
+}
+.OverlayLoad .login-button {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}

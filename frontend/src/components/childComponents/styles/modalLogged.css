@@ -1,0 +1,60 @@
+.card-select {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.card-pngs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+.card-pngs img {
+    width: 40px;
+}
+
+#master, #visa {
+    width: 13px;
+    box-shadow: none;
+}
+
+.card-first-line {
+    display: flex;
+    flex-direction: row;
+}
+.card-first-line .form-label {
+    font-size: 12px;
+    font-weight: 700;
+}
+.card-owner {
+    margin: 0 5px;
+}
+.card-cvv {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5px;
+    justify-content: center;
+}
+.card-number {
+    margin: 10px 5px 0 5px ;
+}
+.card-number, .form-label {
+    font-size: 12px;
+    font-weight: 700;
+}
+.card-exp {
+    display: flex;
+    margin: 10px 5px;
+    flex-direction: column;
+    width: 100px;
+}
+.card-exp-select {
+    display: flex;
+    flex-direction: row;
+}
+.card-exp-select select {
+    outline: none;
+}
+.pay-buttons {
+    
+}

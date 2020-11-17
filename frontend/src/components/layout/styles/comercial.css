@@ -1,0 +1,35 @@
+.commercial {
+    margin: 30px auto;
+    position: relative;
+    width: 900px;
+    height: 215px;
+}
+.gray-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0,.4);
+    color: #fff;
+}
+.addimg {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+@media (max-width: 950px) {
+    .commercial {
+        width: 100%;
+        margin: 30px 0;
+    }
+}
+/* @media (max-width: 800px) {
+    .commercial {
+        width: 600px;
+    }
+} */
+@media (max-width: 600px) {
+    .commercial {
+        width: 100%;
+        margin: 0;
+    }
+}

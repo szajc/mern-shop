@@ -2,7 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const userRoutes = require("./routes/userRouter")
-const todoRoutes = require("./routes/todoRouter")
+const shopRoutes = require("./routes/shopRouter")
+const cartRoutes = require("./routes/cartRouter")
 require("dotenv").config();
 
 
@@ -31,4 +32,5 @@ mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
 // set up routes 
 
 app.use("/users", userRoutes);
-app.use("/todos", todoRoutes);
+app.use("/shop", shopRoutes);
+app.use("/cart", cartRoutes);

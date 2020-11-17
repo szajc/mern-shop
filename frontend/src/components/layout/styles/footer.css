@@ -1,0 +1,23 @@
+#footer {
+    position: relative;
+    margin-top: 20px;
+    padding: 0 20px;
+    width: 100%;
+}
+.in-footer {
+    border-top: 1px solid  #bd5d38;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    margin: auto;
+    color:  #bd5d38;
+    font-size: 10px;
+    width: 900px;
+    padding: 0 30px;
+}
+@media (max-width: 950px) {
+    .in-footer {
+        width: 100%;
+
+    }
+}

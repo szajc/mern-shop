@@ -1,0 +1,104 @@
+.shop-items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 900px;
+    margin: 10px auto;
+    justify-content: center;
+}
+.shop-items img {
+    width: 100%;
+}
+.card {
+    box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    width: 200px;
+    border: 1px solid #e0dfdf;
+    padding: 5px;
+    text-align: center;
+}
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+.card p {
+    margin: 0;
+}
+.square {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    top: 5px;
+    right: 5px;
+    overflow: hidden;
+}
+.rotated-square {
+    -ms-transform: rotate(45deg); /* IE 9 */
+    transform: rotate(45deg);
+    background-color: red;
+    color: #fff;
+    width: 70px;
+    height: 46px;
+    position: absolute;
+    top: -15px;
+    right: -29px;
+}
+.red {
+    background-color: red;
+}
+.green {
+    background-color: green;
+}
+.rotated-square p {
+    margin: 0;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+.card-button {
+    position: relative;
+    padding: 4px;
+    font-size: 13px;
+    border-radius: 5px;
+    width: 93px;
+    font-weight: 600;
+    border: 1px solid #bd5d38;
+    color: #bd5d38!important;
+    cursor: pointer;
+    outline: none!important;
+    /* -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out; */
+}
+.card-button:hover {
+    background-color:#bd5d38;
+    color: #fff!important;
+    box-shadow: 1px 2px 5px 0px rgb(0, 0, 0,.3);
+}
+
+@media (max-width: 900px) {
+    .shop-items {
+        max-width: 600px;
+    }
+    .card {
+        width: 150px;
+    }
+}
+@media (max-width: 600px) {
+    .shop-items {
+        max-width: 100%;
+    }
+    .card {
+        width: 150px;
+    }
+}
+@media (max-width: 400px) {
+    .card {
+        width: 100%;
+    }
+    .card:hover {
+        transform: scale(1);
+        box-shadow: none;
+    }
+}

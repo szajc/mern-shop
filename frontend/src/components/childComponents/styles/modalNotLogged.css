@@ -1,0 +1,44 @@
+.Overlay {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 50px;
+    z-index: 999;
+    scroll-behavior: smooth;
+}
+.Modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0,.7);
+    z-index: 998;
+}
+.Overlay p {
+    border: 1px solid #bd5d38;
+    border-radius: 5px;
+    padding: 10px 10px;
+}
+.cart-pay-buttons {
+    position: relative;
+    align-self: flex-end;
+    margin: 15px 10px 15px 10px;
+    padding: 4px;
+    font-size: 13px;
+    border-radius: 5px;
+    width: 107px;
+    width: 93px;
+    font-weight: 600;
+    border: 1px solid #bd5d38;
+    background-color:#bd5d38;
+    color: #fff!important;
+    cursor: pointer;
+    outline: none!important;
+}
+.cart-pay-buttons:hover {
+    box-shadow: 1px 2px 5px 0px rgb(0, 0, 0,.3);
+}
