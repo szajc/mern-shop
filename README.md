@@ -31,13 +31,13 @@ additional libraries:
 
 /shop
 - "/all" get - all shop items
-- "/add" post - add new item to shop; requires { name, category, use, available, count, price, uid and _id - added automaticly}
+- "/add" post - add new item to shop; requires { name, category, use, available, count, price, (uid and _id - added automaticly)}
 - "/:id" get - item
 
 /cart
 - "/all" get - all cart items
 - "/updatecart" post - updates selected item
-- "/add" post - add new item to shop; requires { name, category, available, use, count, price, owner and uid and _id - added automaticly}
+- "/add" post - add new item to shop; requires { name, category, available, use, count, price, (owner, uid and _id - added automaticly)}
 - "/:id" delete - item
 - "/deleteall" delete - deletes all
 
