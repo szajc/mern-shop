@@ -42,3 +42,5 @@ additional libraries:
 - "/deleteall" delete - deletes all
 
 ## frontend build with React - inside FRONTEND map
+
+ps. some code like useContext/provider is just an example of how it can be used... 
