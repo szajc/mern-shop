@@ -2,8 +2,10 @@
 
 #header {
     height: 65px;
-    background-color: #bd5d38;
-    width: 100vw;
+    background: #bd5d38;
+    background: linear-gradient(90deg, rgba(189,93,56,1) 50%, rgba(196,137,115,1) 100%);
+    /*background-color: #bd5d38;
+     width: 100vw; */
 }
 .in-header {
     max-width: 900px;
@@ -26,18 +28,19 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    padding-right: 30px;
 }
 .cart {
     position: relative;
 }
 .cart img {
-    height: 40px;
+    height: 30px;
     margin: 0 1rem;
 }
 .circle-items {
     position: absolute;
-    top: 0;
-    right: 10px;
+    top: -5px;
+    right: 5px;
     border-radius: 25px;
     background-color: red;
     height: 22px;
@@ -46,19 +49,48 @@
     color: #000;
     font-weight: 900;
 }
-
+.auth-option {
+    display: flex;
+    height: 100%;
+}
 #header .auth-options {
     height: 100%;
     display: flex;
 }
 #header .auth-options button {
     padding: 0 1rem;
-    background-color:#bd5d38;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 1.1rem;
+    width: 100%;
+}
+#header .auth-options button:hover {
+    background-color: #bd5d38;
+}
+.myaccount-click {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.myaccount-click p {
     color: #ffffff;
     font-size: 1.1rem;
 }
-#header .auth-options button:hover {
-    background-color:#ca7d60;
+.myaccount-click img {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+.myaccount-click img:last-child {
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+}
+.hamburger-click {
+    display: none;
+}
+.hamburger-click img {
+    width: 35px;
 }
 
 @media (max-width: 800px) {
@@ -73,5 +105,23 @@
     }
     .rightHeader {
         padding-right: 30px;
+    }
+}
+@media (max-width: 550px) {
+    .auth-option {
+        display: none;
+    }
+    .myaccount-click {
+        display: none;
+    }
+    /*
+    .auth-options {
+        display: none;
+    }*/
+    .hamburger-auth {
+        display: flex;
+    } 
+    .hamburger-click {
+        display: flex;
     }
 }

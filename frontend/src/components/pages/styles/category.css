@@ -1,0 +1,46 @@
+.selected-page {
+    display: flex;
+    position: relative;
+    margin: auto;
+    width: 900px;
+    justify-content: center;
+    flex-direction: row;
+}
+.selected-page .shop-items {
+    width: 700px;
+ }
+ .open-filter {
+    position: relative;
+    left: 20px;
+    width: 250px;
+ }
+ .filter-button {
+     display: none;
+ }
+ /*
+ .selected-page .shop-items .card {
+    max-width: 200px;
+}  */
+@media (max-width: 920px) {
+    .selected-page {
+        width: 100%;
+        flex-direction: column;
+    }
+    .selected-page .shop-items {
+        width: 100%;
+    }
+    .filter-button {
+        display: flex;
+    }
+}
+@media (max-width: 500px) {
+    .selected-page .shop-items {
+        display: flex;
+        flex-wrap: wrap;
+        overflow-x: hidden;
+        justify-content: center;
+    }
+    .selected-page .shop-items .card {
+        width: 150px;
+    }
+}

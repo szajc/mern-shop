@@ -1,30 +1,62 @@
 .shop-items {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 900px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 180px));
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
     margin: 10px auto;
+    width: 100%;
+    padding: 10px 20px;
     justify-content: center;
+    overflow-x: hidden;
 }
 .shop-items img {
     width: 100%;
 }
 .card {
-    box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.1);
-    margin: 10px;
+    box-shadow: none;
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
-    width: 200px;
-    border: 1px solid #e0dfdf;
+    width: 100%;
+    /*max-width: 170px;
+     min-width: 150px; */
+    border: none; /*1px solid #e0dfdf; */
     padding: 5px;
     text-align: center;
 }
+.card-body {
+    padding: 1.25rem 0!important;
+}
 .card:hover {
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
     box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.3);
 }
 .card p {
     margin: 0;
+}
+.card .item-prices {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.card .item-price {
+    font-size: 13px;
+    font-weight: 400;
+    padding: 0 10px;
+    text-decoration: line-through;
+}
+.card .item-dprice {
+    font-size: 18px;
+    color: red;
+}
+.discount {
+    position: absolute;
+    padding: 0 10px;
+    font-size: 15px;
+    background-color: red;
+    color: #fff;
+    top: 15px;
+    left: 5px;
 }
 .square {
     position: absolute;
@@ -57,17 +89,22 @@
     position: absolute;
     bottom: 0;
 }
+.shop-items .buttons-divider {
+    margin-left: 0;
+}
 .card-button {
     position: relative;
     padding: 4px;
-    font-size: 13px;
-    border-radius: 5px;
-    width: 93px;
+    font-size: 14px;
+    width: 100%;
     font-weight: 600;
     border: 1px solid #bd5d38;
-    color: #bd5d38!important;
+    /* color: #bd5d38!important;*/ 
+    border-radius: 2px;
     cursor: pointer;
     outline: none!important;
+    background-color: #bd5d38!important;
+    color: #fff;
     /* -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out; */
 }
@@ -79,18 +116,27 @@
 
 @media (max-width: 900px) {
     .shop-items {
-        max-width: 600px;
+        width: 100%;
     }
+}    /*
     .card {
         width: 150px;
     }
 }
 @media (max-width: 600px) {
-    .shop-items {
-        max-width: 100%;
-    }
     .card {
         width: 150px;
+    }
+} */
+@media (max-width: 500px) {
+    .shop-items {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        justify-content: flex-start;
+    }
+    .card {
+        min-width: 150px;
     }
 }
 @media (max-width: 400px) {

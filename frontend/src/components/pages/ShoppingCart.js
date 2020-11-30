@@ -26,7 +26,7 @@ export default function ShoppingCart() {
                         Array.isArray(cartItems) && cartItems.length ? 
                         <React.Fragment>
                         <CartPaying /> 
-                            <CartItems />
+                        <CartItems />
                             
                         </React.Fragment> :
                         <div className="empty-cart">

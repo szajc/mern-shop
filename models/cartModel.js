@@ -8,9 +8,9 @@ const cartSchema = new mongoose.Schema({
     available: {type: Boolean, required: true}, // if available
     count: {type: Number, required: true}, // how many in package
     price: {type: Number, required: true}, // price of item
+    dprice: {type: Number, required: true}, // discount price of item
     cookie: {type: String, required: false}, // if cookie
     owner: {type: String, required: false}, // if owner
-    //shopID: {type: String, required: true}, // shop ID so we can compare
     uid: {type: String, required: true}, // unique id that stays!
 });
 

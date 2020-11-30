@@ -1,0 +1,63 @@
+.filters {
+    padding: 0 20px;
+}
+.filter-price {
+    width: 200px;
+}
+.delete-filtered-price {
+    margin: 20px 0;
+}
+.del-filter {
+    font-weight: 700;
+    font-size: 15px;
+}
+.del-filter span {
+    color: red;
+    font-size: 20px;
+    padding-right: 10px;
+}
+.filter-price button {
+    position: relative;
+    align-self: flex-end;
+    margin-bottom: 15px;
+    padding: 4px;
+    font-size: 15px;
+    border-radius: 5px;
+    font-weight: 600;
+    border: 1px solid #bd5d38;
+    background-color:#bd5d38;
+    color: #fff!important;
+    cursor: pointer;
+    outline: none!important;
+}
+.search-input {
+    outline: none;
+    margin-bottom: 10px;
+    border: 1px solid #bd5d38;
+    padding: 5px;
+}
+.filter-price button:hover {
+    box-shadow: 1px 2px 5px 0px rgb(0, 0, 0,.3);
+}
+.filter-price-input {
+    display: flex;
+    justify-content: space-around;
+}
+.filter-price-input input {
+    height: 50px;
+    width: 80px;
+    text-align: center;
+    outline: none;
+    border: 1px solid #bd5d38;
+    color: #bd5d38;
+}
+.filter-price p {
+    font-weight: 700;
+}
+.hidden-button {
+    display: none;
+}
+/* overriding meterial*/
+.MuiSlider-root {
+    color:  #bd5d38!important;
+}

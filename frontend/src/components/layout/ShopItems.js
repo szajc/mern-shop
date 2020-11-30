@@ -1,4 +1,4 @@
-import React, { } from 'react'
+import React from 'react'
 import { Card } from 'react-bootstrap';
 import Axios from 'axios';
 
@@ -11,12 +11,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from 'react-router-dom'
 
-import './styles/shopItems.css'
+import './styles/shopItemsgrid.css'
 
 export default function ShopItems({ data }) {
 
     const cartData = useSelector( (state) => state.cartData);
-    //const { userData } = useContext(UserContext);
     const dispatch = useDispatch();
 
     const checkimg = (category) => {
@@ -76,7 +75,7 @@ export default function ShopItems({ data }) {
         //console.log(checkItem(selectedItem))
         console.log(selectedItem)
         dispatch({type: actionType.ADD_CART});
-        dispatch({type: actionType.ADD_PRICE, payload: selectedItem.price});
+        dispatch({type: actionType.ADD_PRICE, payload: selectedItem.dprice ? selectedItem.dprice : selectedItem.price});
         if (checkItem(selectedItem)) {
             dispatch({type: actionType.ADD_SAME_CART_ITEM, payload: selectedItem.uid});
             await UpdateItemFromCartMDB(selectedItem);
@@ -89,7 +88,7 @@ export default function ShopItems({ data }) {
         <div className="shop-items" >
             {
                 data ? data.map( item => (
-                    <Card key={item._id}>
+                    <Card key={item._id} >
                         <Link to={"/shop/" + item.uid} >
                             <Card.Img variant="top" src={checkimg(item.category)} alt="" />
                         </Link>
@@ -103,14 +102,28 @@ export default function ShopItems({ data }) {
                             </div> :
                             null
                         }
+                        {
+                            item.dprice!==item.price ?
+                            <div className="discount">
+                                <p>-{Math.round(100 - (item.dprice * 100 / item.price))}%</p>
+                            </div> :
+                            null
+                        }
                         <Card.Body>
                             <Card.Subtitle>{item.name}</Card.Subtitle>
-                            <p>{item.price}$</p>
-                            
+                            {
+                                item.dprice!==item.price ?
+                                <div className="item-prices">
+                                    <p className="item-price">{item.price}$</p>
+                                    <p className="item-dprice">{item.dprice}$</p>
+                                </div> :
+                                <p>{item.price}$</p>
+                            }
                             <div className="buttons-divider">
                                 <button className="card-button" 
                                     onClick={() => addToCart(item)} >Add to cart</button>
                             </div>
+                            <p>In Stock</p>
                         </Card.Body>
                     </Card>
                 )) : null

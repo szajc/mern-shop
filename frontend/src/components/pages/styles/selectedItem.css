@@ -29,10 +29,24 @@
     justify-content: space-between;
     padding: 10px 0;
 }
+.selected-item-prices {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.selected-item-price {
+    font-size: 13px;
+    font-weight: 400;
+    padding: 0 10px;
+    text-decoration: line-through;
+}
+.selected-item-dprice {
+    font-size: 18px;
+    color: red;
+}
 .price-top p {
     margin: 0;
-    font-weight: 700;
-    font-size: 20px;
 }
 .pricetag-img {
     width: 30px;

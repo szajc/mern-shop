@@ -4,6 +4,7 @@ const cors = require("cors");
 const userRoutes = require("./routes/userRouter")
 const shopRoutes = require("./routes/shopRouter")
 const cartRoutes = require("./routes/cartRouter")
+const newsRoutes = require("./routes/newsRouter")
 require("dotenv").config();
 
 
@@ -34,3 +35,4 @@ mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
 app.use("/users", userRoutes);
 app.use("/shop", shopRoutes);
 app.use("/cart", cartRoutes);
+app.use("/news", newsRoutes);

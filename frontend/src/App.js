@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Shop from './components/pages/Shop';
 import ShoppingCart from './components/pages/ShoppingCart';
 import SelectedItem from './components/pages/SelectedItem';
+//import CategoryPage from './components/pages/Category';
+import OfferPage from './components/pages/Offer';
+import AllShopItems from './components/pages/AllShopItems';
+import Settings from './components/pages/Settings';
 
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
@@ -66,8 +70,15 @@ const App = () => {
             <Switch>
               <Route path="/register" component={Register} />
               <ProtectedRoute exact path="/shop" component={Shop} />
+              <ProtectedRoute exact path="/settings" component={Settings} />
+              <ProtectedRoute exact path="/shop/allitems" component={AllShopItems} />
               <ProtectedRoute exact path="/cart" component={ShoppingCart} />
+{
+              //<ProtectedRoute path="/shop/page/:id" component={CategoryPage} />
+              }
+              <ProtectedRoute path="/shop/offer/:id" component={OfferPage} />
               <ProtectedRoute path="/shop/:id" component={SelectedItem} />
+              
               <Route path="/login" component={Login} />
               <Route exact path="/" component={Login} />
             </Switch>

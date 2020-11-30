@@ -1,0 +1,45 @@
+.shop-pages {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    overflow: hidden;
+    margin: auto;
+    justify-content: center;
+}
+.shop-page {
+    position: relative;
+    height: 100px;
+    width: 150px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+.shop-page:hover {
+    cursor: pointer;
+}
+.shop-page img {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    object-fit: cover;
+}
+.shop-page p {
+    position: absolute;
+    color: #fff;
+    font-weight: 700;
+    font-size: 25px;
+    z-index: 3;
+}
+/* .shop-pages p {
+    padding-left: 20%;
+    margin-bottom: 0;
+    font-weight: 400;
+    color: gray;
+} */
+
+@media (max-width: 450px) {
+    .shop-pages {
+        width: 90%;
+    }
+}

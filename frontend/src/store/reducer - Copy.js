@@ -40,9 +40,7 @@ const reducer = (state = initialState, action) => {
             //WORK
         case actionTypes.ADD_WHOLE_CART:
             let data = action.payload;
-            let newPrice = data.reduce((acc, {dprice, price, count}) => acc + (
-                dprice ? dprice * count : price * count
-            ), 0 );
+            let newPrice = data.reduce((acc, {price, count}) => acc + (price * count), 0 );
             let newCart = data.reduce((acc, {count}) => acc + count, 0 );
             return {
                 ...state,
@@ -84,7 +82,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 cart: state.cart - action.payload.count,
                 cartData: newDataRWIFC,
-                price: state.price - (newCount[0].dprice ? newCount[0].dprice * newCount[0].count : newCount[0].price * newCount[0].count),
+                price: state.price - (newCount[0].count * newCount[0].price),
             }
         case actionTypes.ADD_CART:
             return {
@@ -125,7 +123,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 cartData: newData,
-                price: state.price + ( action.payload.item.dprice ? action.payload.item.dprice * count : action.payload.item.price * count ),
+                price: state.price + ( action.payload.item.price * count ),
                 cart: state.cart + count,
             }
         case actionTypes.DELETE_ALL_FROM_CART:

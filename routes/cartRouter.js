@@ -45,7 +45,7 @@ router.post("/updatecart", auth, async (req, res) => {
 
 router.post("/add", auth, async (req, res) => {
     try {
-        const { name, category, available, use, count, price, uid } = req.body;
+        const { name, category, available, use, count, price, uid, offer, dprice } = req.body;
         // validation
         if (!name)
             return res.status(400).json({ msg: "Enter name of item!" });
@@ -57,7 +57,12 @@ router.post("/add", auth, async (req, res) => {
             return res.status(400).json({ msg: "How many in package missing: count!" });
         if (!price)
             return res.status(400).json({ msg: "Enter price!" });
+        if (!dprice)
+            return res.status(400).json({ msg: "Enter discount price!" });
+        if (!offer) offer = "none";
         if (!use) use = "";
+        
+        console.log(req.body.dprice)
         const newCartItem = new Cart({
             name,
             category,
@@ -65,6 +70,8 @@ router.post("/add", auth, async (req, res) => {
             use,
             count,
             price,
+            offer,
+            dprice,
             cookie: "cookieMonster",
             owner: req.user,
             uid,
@@ -75,6 +82,17 @@ router.post("/add", auth, async (req, res) => {
         res.status(500).json({ error: err.message })
     }
 })
+
+router.delete("/deleteall", auth, async (req, res) => {
+    try {
+        await Cart.deleteMany({ owner: req.user}, err => {
+            if (err) res.status(401).json({ error: err.message });
+        });
+    } catch (e) {
+        res.status(401).json({ error: err.message });
+    }
+})
+// :ID has to be last!
 router.delete("/:id", auth, async (req, res) => {
     const cartItem = await Cart.findOne({_id: req.params.id, owner: req.user})
     if(!cartItem)
@@ -86,22 +104,4 @@ router.delete("/:id", auth, async (req, res) => {
     const deletedCart = await Cart.findByIdAndDelete({_id: req.params.id, owner: req.user});        
     res.json(deletedCart);
 })
-
-router.delete("/deleteall", auth, async (req, res) => {
-    console.log(req);
-    try {
-        const findAll = await Cart.find({owner: req.user})
-        const getUids = findAll.map(each => each._id);
-        console.log(getUids)
-        //let uids = req.body;
-        console.log(test)
-        await Cart.deleteMany({ _id: { $in: getUids}}, err => {
-            if (err) console.log(err)
-        });
-        //res.json(deleteCartItems);
-    } catch (e) {
-        console.log (e);
-    }
-})
-
 module.exports = router

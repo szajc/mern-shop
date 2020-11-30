@@ -1,0 +1,13 @@
+.slider-component {
+    position: relative;
+    /* width: 900px; */
+    margin: 0 auto 25px 0;
+    max-width: 100%;
+}
+.slider-component img {
+    width: 100%;
+    /* height: 600px; */
+}
+.slick-arrow {
+    display: none!important;
+}

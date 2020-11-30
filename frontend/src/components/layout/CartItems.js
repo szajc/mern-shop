@@ -55,7 +55,7 @@ export default function CartItems() {
         console.log(selectedItem)
         dispatch({type: actionType.ADD_SAME_CART_ITEM, payload: selectedItem.uid});
         dispatch({type: actionType.ADD_CART});
-        dispatch({type: actionType.ADD_PRICE, payload: selectedItem.price});
+        dispatch({type: actionType.ADD_PRICE, payload: selectedItem.dprice ? selectedItem.dprice : selectedItem.price});
         await updateItemFromCartMDB(newItem)
     }
     const removeItemFromCart = async (selectedItem) => {
@@ -66,7 +66,7 @@ export default function CartItems() {
         if (selectedItem.count > 1) {
             dispatch({type: actionType.REMOVE_SAME_CART_ITEM, payload: selectedItem.uid});
             dispatch({type: actionType.REMOVE_CART});
-            dispatch({type: actionType.REMOVE_PRICE, payload: selectedItem.price});
+            dispatch({type: actionType.REMOVE_PRICE, payload: selectedItem.dprice ? selectedItem.dprice : selectedItem.price});
             await updateItemFromCartMDB(newItem)
         }
     }
@@ -108,7 +108,14 @@ export default function CartItems() {
                                     null
                                 }
                                 <Card.Body className="cart-card-body">
-                                    <p>{item.price}$</p>
+                                    {
+                                        item.dprice!==item.price ?
+                                        <div className="item-prices">
+                                            <p className="item-price">{item.price}$</p>
+                                            <p className="item-dprice">{item.dprice}$</p>
+                                        </div> :
+                                        <p>{item.price}$</p>
+                                    }
                                 </Card.Body>
                             </Card>
                         </div>

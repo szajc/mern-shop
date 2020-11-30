@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useRef } from 'react'
 import Axios from 'axios';
 import UserContext from "../../context/UserContext";
 import { useHistory } from 'react-router-dom';
@@ -18,9 +18,13 @@ export default function Register() {
 
     const history = useHistory();
 
+    let token = useRef(() => {})
+    token = localStorage.getItem("auth-token");
+
     useEffect(() => {
-        userData.user && history.push("/shop")
-    }, []);
+        token.current!=="" && history.push("/shop");
+    }, [token]);
+
     console.log(userData)
     
     const submit = async (e) => {

@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Axios from 'axios';
 
 import Header from '../layout/Header';
@@ -25,7 +25,9 @@ export default function SelectedItem({match}) {
 
     const id = match.params.id
 
-    const getData = async () => {
+    const getData = useRef();
+
+    getData.current = async () => {
         try {
             await Axios.get( "http://localhost:5000/shop/" + id)
             .then(response => {
@@ -38,8 +40,8 @@ export default function SelectedItem({match}) {
     }
 
     useEffect(() => {
-        getData();
-    }, [])
+        getData.current();
+    }, [getData])
 
     const checkimg = (category) => {
         let cat;
@@ -131,7 +133,16 @@ export default function SelectedItem({match}) {
                     <div className="pricetag-add-cart">
                         <div className="price-top">
                             <img className="pricetag-img" src={priceTag} alt="price tag" />
-                            <p>$ {data ? data.price : null }</p>
+                            {   
+                                data ?
+                                data.dprice!==data.price ?
+                                <div className="selected-item-prices">
+                                    <p className="selected-item-price">{data.price}$</p>
+                                    <p className="selected-item-dprice">{data.dprice}$</p>
+                                </div> :
+                                <p>{data.price}$</p> :
+                                null
+                            }
                         </div>
                         <div className="cartitems-buttons">
                             <div className="remove-cartitem" onClick={removeItem} >-</div>

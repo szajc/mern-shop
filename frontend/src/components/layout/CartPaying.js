@@ -51,6 +51,10 @@ export default function CartPaying() {
         deleteAllFromCartMDB();
         dispatch({ type: actionType.DELETE_ALL_FROM_CART });
     }
+    const onCloseHandler = () => {
+        setLoading(false);
+        setShowFinalModal(true);
+    }
 
     return (
         <div className="cartPaying">
@@ -67,12 +71,9 @@ export default function CartPaying() {
             </div>
             <button className="cart-button" onClick={handlePayWithCard} >PAY WITH CARD</button>
             <ModalNotLogged open={showModal} close={() => setShowModal(false)} />
-            <ModalLogged open={showModalLogged} close={() => setShowModalLogged(false)} pay={() => handlePayLoader()} />
-            <ModalLoading open={loading} close={() => {
-                setLoading(false);
-                setShowFinalModal(true);
-            }} />
-            <ModalPaymentSuccessfull open={showFinalModal} close={() => showPaymentSuccessfullModal()} />
+            <ModalLogged open={showModalLogged} close={() => setShowModalLogged(false)} pay={handlePayLoader} />
+            <ModalLoading open={loading} close={onCloseHandler} />
+            <ModalPaymentSuccessfull open={showFinalModal} close={showPaymentSuccessfullModal} />
         </div>
     )
 }
