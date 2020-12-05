@@ -1,6 +1,6 @@
 Frontend folder
 
-for libraries used check package.json
+for libraries used check package.json \n
 Primary routing pages in src/components/pages
 If user not logged in src/componenets/ProtectedRoute/
 Images . since they are not loaded from server  src/componenets/images
