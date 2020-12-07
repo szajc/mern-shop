@@ -5,6 +5,7 @@ const userRoutes = require("./routes/userRouter")
 const shopRoutes = require("./routes/shopRouter")
 const cartRoutes = require("./routes/cartRouter")
 const newsRoutes = require("./routes/newsRouter")
+const path = require('path');
 require("dotenv").config();
 
 
@@ -18,10 +19,8 @@ app.use(cors());
 // othervise its gonna take port-5000
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log("The server has started on PORT: " + PORT));
-
 // set up mongoose
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
+mongoose.connect( process.env.MONGODB_URI || process.env.MONGODB_CONNECTION_STRING, {
     useNewUrlParser: true, 
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -36,3 +35,13 @@ app.use("/users", userRoutes);
 app.use("/shop", shopRoutes);
 app.use("/cart", cartRoutes);
 app.use("/news", newsRoutes);
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static( 'frontend/build' ));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html' )); // relative path 
+    })
+}
+
+app.listen(PORT, () => console.log("The server has started on PORT: " + PORT));
