@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const userRoutes = require("./routes/userRouter")
@@ -6,7 +7,7 @@ const shopRoutes = require("./routes/shopRouter")
 const cartRoutes = require("./routes/cartRouter")
 const newsRoutes = require("./routes/newsRouter")
 const path = require('path');
-require("dotenv").config();
+
 
 
 // set up express
@@ -35,7 +36,7 @@ app.use("/users", userRoutes);
 app.use("/shop", shopRoutes);
 app.use("/cart", cartRoutes);
 app.use("/news", newsRoutes);
-
+//NODE_ENV=production in .env file
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, 'frontend/build' )));
 

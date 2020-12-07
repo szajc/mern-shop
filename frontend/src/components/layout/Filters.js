@@ -31,6 +31,11 @@ export default function Filters({ handleData, submitDataBack }) {
 
     const filterData = useRef(() => {});
     const getUrlData = useRef(() => {});
+    const submitData = useRef(() => {});
+
+    submitData.current = (newData) => {
+        submitDataBack(newData)
+    };
     
     getUrlData.current = () => {
         const queryString = window.location.search;
@@ -83,7 +88,7 @@ export default function Filters({ handleData, submitDataBack }) {
     }, [ getParams ]) 
 
     useEffect(() => {
-        submitDataBack(newPageData);
+        submitData.current(newPageData);
     }, [ newPageData ]) // watch out
 
     // BUTTONS BELLOW
