@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useParams } from 'react-router-dom';
 import Axios from 'axios'
-
+import { useSelector } from 'react-redux';
 import Header from '../layout/Header';
 import Comercial from '../layout/Comercial';
 import ShopItems from '../layout/ShopItems';
@@ -14,6 +14,7 @@ export default function Categor() {
 
     const [pageData, setPageData] = useState();
     const [newPageData, setNewPageData] = useState();
+    const prod = useSelector( (state) => state.production);
 
     const getPageData = useRef(() => {});
 
@@ -22,7 +23,7 @@ export default function Categor() {
 
     getPageData.current = async () => {
         try {
-            await Axios.get( "http://localhost:5000/shop/offer/" + id)
+            await Axios.get( prod + "/shop/offer/" + id)
             .then(response => {
                 setPageData(response.data);
                 setNewPageData(response.data);

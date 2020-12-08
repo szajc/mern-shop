@@ -11,12 +11,11 @@ import Settings from './components/pages/Settings';
 
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actionType from './store/actions';
 import './style.css';
 import UserContext from './context/UserContext';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
-import { useSelector } from 'react-redux';
 
 const App = () => {
 

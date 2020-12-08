@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Axios from 'axios'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actionType from '../../store/actions';
 
 import Header from '../layout/Header';
@@ -19,10 +19,10 @@ export default function AllShopItems() {
 
     const dispatch = useDispatch();
     const getPageData = useRef(() => {});
-
+    const prod = useSelector( (state) => state.production);
     getPageData.current = async () => {
         try {
-            await Axios.get( "http://localhost:5000/shop/all")
+            await Axios.get( prod + "/shop/all")
             .then(response => {
                 setPageData(response.data);
                 setNewPageData(response.data);

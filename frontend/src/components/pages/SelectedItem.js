@@ -20,6 +20,7 @@ export default function SelectedItem({match}) {
     const [data, setData] = useState();
     const [quantity, setQuantity] = useState(1);
     const cartData = useSelector( (state) => state.cartData);
+    const prod = useSelector( (state) => state.production);
 
     const dispatch = useDispatch();
 
@@ -29,7 +30,7 @@ export default function SelectedItem({match}) {
 
     getData.current = async () => {
         try {
-            await Axios.get( "http://localhost:5000/shop/" + id)
+            await Axios.get( prod + "/shop/" + id)
             .then(response => {
                 setData(response.data);
                 console.log(response.data)
@@ -55,7 +56,7 @@ export default function SelectedItem({match}) {
         try {
             console.log(selectedItem)
             let token = localStorage.getItem("auth-token");
-            Axios.post( "http://localhost:5000/cart/add", selectedItem, { headers: { "x-auth-token": token }})
+            Axios.post( prod + "/cart/add", selectedItem, { headers: { "x-auth-token": token }})
             .then(response => {
                 console.log(response.data);
             })  
@@ -74,7 +75,7 @@ export default function SelectedItem({match}) {
             console.log(getSameItem)
             console.log(newObj)
             let token = localStorage.getItem("auth-token");
-            Axios.post( "http://localhost:5000/cart/updatecart", newObj, { headers: { "x-auth-token": token }})
+            Axios.post( prod + "/cart/updatecart", newObj, { headers: { "x-auth-token": token }})
             .then(response => {
                 console.log(response.data);
             })  
