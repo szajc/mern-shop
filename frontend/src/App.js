@@ -35,13 +35,13 @@ const App = () => {
       token = "";
     }
     const tokenRes = await Axios.post(
-      "http://localhost:5000/users/tokenIsValid", 
+      "/users/tokenIsValid", 
       null,
       { headers: { "x-auth-token": token } } 
     );
     if (tokenRes.data) {
       const userRes = await Axios.get(
-        "http://localhost:5000/users/",
+        "/users/",
         { headers: { "x-auth-token": token },
       });
       setUserData({
@@ -50,7 +50,7 @@ const App = () => {
       })
       dispatch({type: actionType.AUTHENTICATE, payload: true});
       dispatch({type: actionType.SET_USER_DATA, payload: {token: token, user: userRes.data}})
-      await Axios.get( "http://localhost:5000/cart/all", { headers: { "x-auth-token": token }})
+      await Axios.get( "/cart/all", { headers: { "x-auth-token": token }})
         .then(response => {
             dispatch({ type: actionType.ADD_WHOLE_CART, payload: response.data });
         })
