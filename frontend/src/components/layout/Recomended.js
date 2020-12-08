@@ -4,16 +4,18 @@ import { Link } from 'react-router-dom';
 
 import ShopItems from '../layout/ShopItems';
 import './styles/recomended.css';
+import { useSelector } from 'react-redux';
 
 export default function Recomended({ toWhere, title }) {
 
     const [RecomendedData, setRecomendedData] = useState();
+    const prod = useSelector( (state) => state.production);
 
     const getPageData = useRef(() => {});
 
     getPageData.current = async () => {
         try {
-            await Axios.get( "http://localhost:5000/shop/" + toWhere)
+            await Axios.get( prod + "/shop/" + toWhere)
             .then(response => {
                 setRecomendedData(response.data);
             })

@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 export default function CartItems() {
 
     const cartItems = useSelector( (state) => state.cartData);
+    const prod = useSelector( (state) => state.production);
     const { userData } = useContext(UserContext);
     console.log(cartItems);
     const dispatch = useDispatch();
@@ -38,7 +39,7 @@ export default function CartItems() {
     const updateItemFromCartMDB = async (selectedItem) => {
         try {
             let token = localStorage.getItem("auth-token");
-            Axios.post( "http://localhost:5000/cart/updatecart", selectedItem, { headers: { "x-auth-token": token }})
+            Axios.post( prod + "/cart/updatecart", selectedItem, { headers: { "x-auth-token": token }})
             .then(response => {
                 console.log(response.data);
             })  
@@ -77,7 +78,7 @@ export default function CartItems() {
         try {
             if (userData) {
                 let token = localStorage.getItem("auth-token");
-                Axios.delete( "http://localhost:5000/cart/"+removedItem._id, { headers: { "x-auth-token": token }})
+                Axios.delete( prod + "/cart/"+removedItem._id, { headers: { "x-auth-token": token }})
                 .then(response => {
                     console.log(response);
                 })

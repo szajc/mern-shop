@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
 import { Link } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 import ShopItems from '../layout/ShopItems';
 
 export default function BlackFriday() {
 
     const [bfData, setBfData] = useState();
+    const prod = useSelector( (state) => state.production);
 
     const getPageData = async () => {
         try {
-            await Axios.get( "http://localhost:5000/shop/blackfriday" )
+            await Axios.get( prod + "/shop/blackfriday" )
             .then(response => {
                 setBfData(response.data);
             })

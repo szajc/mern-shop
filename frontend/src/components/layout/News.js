@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import Axios from 'axios';
 import './styles/news.css';
 import email from '../icons/emailwhite.png';
+import { useSelector } from 'react-redux';
 
 export default function News() {
 
     const [newsEmail, setNewsEmail] = useState("");
+    const prod = useSelector( (state) => state.production);
 
     const postData = async (newEmail) => {
         try {
@@ -13,7 +15,7 @@ export default function News() {
                 email: newEmail
             }
             let token = localStorage.getItem("auth-token");
-            await Axios.post( "http://localhost:5000/news/add", newObj, { headers: { "x-auth-token": token }})
+            await Axios.post( prod + "/news/add", newObj, { headers: { "x-auth-token": token }})
             .then(response => {
                 console.log(response.data);
             }) 
