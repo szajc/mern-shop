@@ -21,11 +21,11 @@ export default function Register() {
     const history = useHistory();
 
     let token = useRef(() => {})
-    token = localStorage.getItem("auth-token");
+    token.current = localStorage.getItem("auth-token");
 
-    useEffect(() => {
-        token.current!=="" && history.push("/shop");
-    }, [token]);
+    // useEffect(() => {
+    //     token.current!=="" && history.push("/shop");
+    // }, [token]);
 
     console.log(userData)
     

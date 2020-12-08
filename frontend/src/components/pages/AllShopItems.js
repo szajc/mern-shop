@@ -50,14 +50,15 @@ export default function AllShopItems() {
             <Comercial />
             <div className="selected-page">
                 <div className="open-filter" >
-                    <button className="filter-button" onClick={openFilterHandler}>
-                        Filter
-                        <img  alt="" />
-                    </button>
                     {
-                        openFilter ?
-                        <Filters  handleData={pageData} submitDataBack={backData} /> :
-                        null
+                    //<button className="filter-button" onClick={openFilterHandler}>
+                    //    Filter
+                    //    <img  alt="" />
+                    //</button>
+                    
+                    //    openFilter ?
+                        <Filters  handleData={pageData} submitDataBack={backData} /> 
+                        //:null
                     }
                 </div>
                 

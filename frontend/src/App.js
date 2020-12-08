@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Shop from './components/pages/Shop';
 import ShoppingCart from './components/pages/ShoppingCart';
 import SelectedItem from './components/pages/SelectedItem';
-//import CategoryPage from './components/pages/Category';
 import OfferPage from './components/pages/Offer';
 import AllShopItems from './components/pages/AllShopItems';
 import Settings from './components/pages/Settings';
@@ -16,6 +15,7 @@ import * as actionType from './store/actions';
 import './style.css';
 import UserContext from './context/UserContext';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
+import UnProtectedRoute from './components/protectedRoute/UnProtectedRoute';
 
 const App = () => {
 
@@ -25,8 +25,9 @@ const App = () => {
     user: undefined,
   });
   const prod = useSelector( (state) => state.production);
+  const checkLoggedIn = useRef(() => {});
 
-  const checkLoggedIn = async () => {
+  checkLoggedIn.current = async () => {
     let token = localStorage.getItem("auth-token");
     if (token === null) {
       localStorage.setItem("auth-token", "");
@@ -57,8 +58,8 @@ const App = () => {
   }
 
   useEffect(() => {
-    checkLoggedIn();
-  }, [])
+    checkLoggedIn.current();
+  }, [checkLoggedIn])
 
   return (
     <React.Fragment>
@@ -66,18 +67,15 @@ const App = () => {
         <UserContext.Provider value={{ userData, setUserData }}>
           <div className="">
             <Switch>
-              <Route path="/register" component={Register} />
               <ProtectedRoute exact path="/shop" component={Shop} />
               <ProtectedRoute exact path="/settings" component={Settings} />
               <ProtectedRoute exact path="/shop/allitems" component={AllShopItems} />
               <ProtectedRoute exact path="/cart" component={ShoppingCart} />
-{
-              //<ProtectedRoute path="/shop/page/:id" component={CategoryPage} />
-              }
               <ProtectedRoute path="/shop/offer/:id" component={OfferPage} />
               <ProtectedRoute path="/shop/:id" component={SelectedItem} />
               
-              <Route path="/login" component={Login} />
+              <UnProtectedRoute path="/register" component={Register} />
+              <UnProtectedRoute path="/login" component={Login} />
               <Route exact path="/" component={Login} />
             </Switch>
           </div>

@@ -7,12 +7,12 @@ const initialState = {
     price: 0,
     isAuthenticated: false,
     userData: {},
-    shopFilter: {
-        value: [0, 500],
+    shopFilter: { // not implemented
+        value: [0, 2000],
         checkboxDiscount: false,
         checkboxValue: false,
     },
-    production: "" // "http://localhost:5000/" // SET for LOCALHOST or not !! heroku deploy 
+    production: "" //"http://localhost:5000" // SET for LOCALHOST or "" !! heroku deploy 
 }
 
 const reducer = (state = initialState, action) => {
