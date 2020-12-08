@@ -25,6 +25,7 @@ additional libraries:
 - underscore --
 
 #/ Use Insomnia to check routes
+#/ for more routes check in routes folder
 
 /users
 - "/login" requires { email, password }
@@ -45,4 +46,4 @@ additional libraries:
 
 ## frontend build with React - inside FRONTEND map
 
-ps. some code like useContext/provider is just an example of how it can be used... 
+ps. some code like useContext/provider is just an example of how it can be used...
