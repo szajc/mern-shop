@@ -1,6 +1,7 @@
 ## mern stack
 
 to check how to setup localy or push to heroku check README-SETUP
+
 to view site click https://mern-stack-shop-project.herokuapp.com/
 
 Web app using the MERN stack 
