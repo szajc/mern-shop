@@ -24,7 +24,7 @@ export default function Login() {
     const getCartData = async () => {
         try {
             let token = localStorage.getItem("auth-token");
-            await Axios.get( "http://localhost:5000/cart/all", { headers: { "x-auth-token": token }})
+            await Axios.get( "/cart/all", { headers: { "x-auth-token": token }})
             .then(response => {
                 dispatch({ type: actionType.ADD_WHOLE_CART, payload: response.data });
             })
@@ -38,7 +38,7 @@ export default function Login() {
         try {
             const loginUser = { email, password }
             const loginRes = await Axios.post(
-                "http://localhost:5000/users/login", loginUser);
+                "/users/login", loginUser);
             setUserData({
                 token: loginRes.data.token,
                 user: loginRes.data.user,
