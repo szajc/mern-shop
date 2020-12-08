@@ -4,11 +4,12 @@
 check in map frontend/src/store/reducer.js if initialState.production is set to localhost!
 2. Create mongo Atlas account
     https://www.mongodb.com/cloud/atlas
-3. Create a project
-4. Create a cluster
-5. Click on the connect button from the cluster dashboard and follow the steps for creating a mongo     user for the cluster and whitelisting IP addresses. To whitelist all IP addresses (helpful for when pushing to heroku), add 0.0.0.0 to the whitelist. or atleast list your own IP for local deployment.
-    u then get a string for mongoDB replace ADMIN:PASS with your credentials
-    wich u will put in .env file 
+3. Create a project in mongoDB
+4. Create a cluster in mongoDB
+5. Click on the connect button from the cluster dashboard and follow the steps for creating a mongo user for the cluster and whitelisting IP addresses. To whitelist all IP addresses (helpful for when pushing to heroku), add 0.0.0.0 to the whitelist, or atleast list your own IP for local deployment.
+    
+    U then get a string for your .env file to connect to mongoDB. Replace ADMIN:PASS with your credentials
+    wich u will put in .env file.
     ```
     MONGODB_CONNECTION_STRING=mongodb+srv://<USER>:<PASSWORD>@<YOUR-CLUSTER>?retryWrites=true&w=majority
     JWT_SECRET=<your secret key>
