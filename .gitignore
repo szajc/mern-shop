@@ -1,2 +1,10 @@
 /node_modules
 .env
+.dockerignore
+dev-docker-compose.yml
+docker-compose.yml
+Dockerfile
+Dockerfile.dev
+dev-docker-compose.yml
+test-docker-compose.yml
+testing-docker-compose.yml
