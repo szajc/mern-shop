@@ -1,5 +1,7 @@
 ## mern stack
 
+to check how to setup localy or push to heroku check README-SETUP
+
 Web app using the MERN stack 
 
 - MongoDB - atlas
