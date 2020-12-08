@@ -12,7 +12,7 @@ const initialState = {
         checkboxDiscount: false,
         checkboxValue: false,
     },
-    production: "" //"http://localhost:5000" // SET for LOCALHOST or "" !! heroku deploy 
+    production: "http://localhost:5000" // SET for LOCALHOST or "" !! heroku deploy 
 }
 
 const reducer = (state = initialState, action) => {
