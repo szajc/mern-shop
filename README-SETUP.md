@@ -20,14 +20,18 @@ check in map frontend/src/store/reducer.js if initialState.production is set to 
 8. Install heroku https://devcenter.heroku.com/articles/heroku-cli
 9. Make sure u have git installed
 10. input commands in terminal: 
+    ```
     $ git init
     $ heroku create my-project (if name is not available it will tell u)
     $ heroku login 
     // this will redirect you to sign in via your default browser
     $ git commit -m "add message"
     $ git push heroku master
-11. if something went wrong u can check with 
+    ```
+11. if something went wrong u can check with
+    ```
     $ heroku logs --tail
+    ```
 12. In Heroku under your project/settings, click Reveal Vars and input KEY:VALUE pair of your .env file
 
 File tree looks like this:
