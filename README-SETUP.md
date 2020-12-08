@@ -31,6 +31,7 @@ check in map frontend/src/store/reducer.js if initialState.production is set to 
 12. In Heroku under your project/settings, click Reveal Vars and input KEY:VALUE pair of your .env file
 
 File tree looks like this:
+```
 |- .env                  ( u need to create this file )
 |- package.json
 |- index.js
@@ -50,4 +51,4 @@ File tree looks like this:
            |- protectedRoute/
        |- index.js
        |- app.js
-
+```
