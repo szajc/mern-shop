@@ -20,6 +20,7 @@ export default function CartPaying() {
     const { userData } = useContext(UserContext);
     const price = useSelector( (state) => state.price);
     const count = useSelector( (state) => state.cart);
+    const prod = useSelector( (state) => state.production);
     const dispatch = useDispatch();
 
     const handlePayWithCard = () => {
@@ -33,7 +34,7 @@ export default function CartPaying() {
     const deleteAllFromCartMDB = async () => {
         try {
             let token = localStorage.getItem("auth-token");
-            await Axios.delete( "http://localhost:5000/cart/deleteall", { headers: { "x-auth-token": token }})
+            await Axios.delete( prod + "/cart/deleteall", { headers: { "x-auth-token": token }})
              .then(response => {
                  console.log(response.data);
              })  

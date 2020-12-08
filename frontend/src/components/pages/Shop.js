@@ -1,10 +1,5 @@
 import React from 'react'
-// import Axios from 'axios';, { useState, useEffect }
-// import { useSelector, useDispatch } from "react-redux";
-//import * as actionType from '../../store/actions';
-
 import Header from '../layout/Header';
-//import ShopItems from '../layout/ShopItems';
 import Footer from '../layout/Footer';
 import ShopPages from '../layout/ShopPages';
 import Recomended from '../layout/Recomended';

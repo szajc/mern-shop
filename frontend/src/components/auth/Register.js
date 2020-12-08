@@ -6,6 +6,7 @@ import ErrorNotice from '../misc/ErrorNotice';
 import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import Header from '../layout/Header';
+import { useSelector } from 'react-redux';
 
 export default function Register() {
     const [email, setEmail] = useState();
@@ -15,6 +16,7 @@ export default function Register() {
     const [getError, setGetError] = useState();
 
     const {userData, setUserData} = useContext(UserContext);
+    const prod = useSelector( (state) => state.production);
 
     const history = useHistory();
 
@@ -32,11 +34,11 @@ export default function Register() {
         try {
             let newUser = { email, password, passwordCheck, displayName };
             await Axios.post(
-                "http://localhost:5000/users/register", 
+                prod + "/users/register", 
                 newUser,
             );
             const loginRes = await Axios.post(
-                "http://localhost:5000/users/login", {
+                prod + "/users/login", {
                 email,
                 password,    
             });

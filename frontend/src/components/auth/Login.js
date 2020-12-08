@@ -7,7 +7,7 @@ import ErrorNotice from '../misc/ErrorNotice';
 import { Link } from 'react-router-dom'
 import Header from '../layout/Header';
 import * as actionType from '../../store/actions';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import './styles/login.css';
 
@@ -16,6 +16,7 @@ export default function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [getError, setGetError] = useState();
+    const prod = useSelector( (state) => state.production);
 
     const { setUserData } = useContext(UserContext);
     const history = useHistory();
@@ -24,7 +25,7 @@ export default function Login() {
     const getCartData = async () => {
         try {
             let token = localStorage.getItem("auth-token");
-            await Axios.get( "/cart/all", { headers: { "x-auth-token": token }})
+            await Axios.get( prod + "/cart/all", { headers: { "x-auth-token": token }})
             .then(response => {
                 dispatch({ type: actionType.ADD_WHOLE_CART, payload: response.data });
             })
@@ -38,7 +39,7 @@ export default function Login() {
         try {
             const loginUser = { email, password }
             const loginRes = await Axios.post(
-                "/users/login", loginUser);
+                prod + "/users/login", loginUser);
             setUserData({
                 token: loginRes.data.token,
                 user: loginRes.data.user,

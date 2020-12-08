@@ -16,6 +16,7 @@ import './styles/shopItemsgrid.css'
 export default function ShopItems({ data }) {
 
     const cartData = useSelector( (state) => state.cartData);
+    const prod = useSelector( (state) => state.production);
     const dispatch = useDispatch();
 
     const checkimg = (category) => {
@@ -43,7 +44,7 @@ export default function ShopItems({ data }) {
         try {
             console.log(selectedItem)
             let token = localStorage.getItem("auth-token");
-            Axios.post( "http://localhost:5000/cart/add", selectedItem, { headers: { "x-auth-token": token }})
+            Axios.post( prod + "/cart/add", selectedItem, { headers: { "x-auth-token": token }})
             .then(response => {
                 console.log(response.data);
                 dispatch({ type: actionType.ADD_DATA, payload: response.data });
@@ -62,7 +63,7 @@ export default function ShopItems({ data }) {
             console.log(getSameItem)
             console.log(newObj)
             let token = localStorage.getItem("auth-token");
-            Axios.post( "http://localhost:5000/cart/updatecart", newObj, { headers: { "x-auth-token": token }})
+            Axios.post( prod + "/cart/updatecart", newObj, { headers: { "x-auth-token": token }})
             .then(response => {
                 console.log(response.data);
             })  

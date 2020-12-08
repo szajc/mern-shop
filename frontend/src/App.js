@@ -13,12 +13,10 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import { useDispatch } from "react-redux";
 import * as actionType from './store/actions';
-
 import './style.css';
-
 import UserContext from './context/UserContext';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
-
+import { useSelector } from 'react-redux';
 
 const App = () => {
 
@@ -27,6 +25,7 @@ const App = () => {
     token: undefined,
     user: undefined,
   });
+  const prod = useSelector( (state) => state.production);
 
   const checkLoggedIn = async () => {
     let token = localStorage.getItem("auth-token");
@@ -35,13 +34,13 @@ const App = () => {
       token = "";
     }
     const tokenRes = await Axios.post(
-      "/users/tokenIsValid", 
+      prod + "/users/tokenIsValid", 
       null,
       { headers: { "x-auth-token": token } } 
     );
     if (tokenRes.data) {
       const userRes = await Axios.get(
-        "/users/",
+        prod + "/users/",
         { headers: { "x-auth-token": token },
       });
       setUserData({
@@ -50,7 +49,7 @@ const App = () => {
       })
       dispatch({type: actionType.AUTHENTICATE, payload: true});
       dispatch({type: actionType.SET_USER_DATA, payload: {token: token, user: userRes.data}})
-      await Axios.get( "/cart/all", { headers: { "x-auth-token": token }})
+      await Axios.get( prod + "/cart/all", { headers: { "x-auth-token": token }})
         .then(response => {
             dispatch({ type: actionType.ADD_WHOLE_CART, payload: response.data });
         })
